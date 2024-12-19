@@ -18,10 +18,15 @@
 } */
 
 .bg-content1 {
-  background-color: #1C1C1C;
+  position: relative;
+  background: rgba(28, 28, 28, 0.6); /* Fundo semi-transparente */
+  backdrop-filter: blur(10px); /* Aplica o desfoque ao fundo */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidade com navegadores baseados no Webkit */
+  border-radius: 18px; /* Bordas arredondadas */
 }
 
 :root {
+  background-color: black;
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   --card: 240 10% 3.9%;
@@ -81,4 +86,19 @@
   backdrop-filter: blur(10px); /* Aplica o desfoque ao fundo */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidade com navegadores baseados no Webkit */
   border-radius: 18px; /* Bordas arredondadas */
+}
+
+.nextui-table thead {
+  background-color: transparent;
+}
+
+.nextui-table th {
+  background-color: transparent;
+  color: #878787;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.nextui-table td:hover {
+  background-color: transparent;
 }

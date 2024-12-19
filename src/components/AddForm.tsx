@@ -1,9 +1,54 @@
 import {Select, SelectItem, Avatar, Input, Button} from "@nextui-org/react";
 
+const coins = [
+  {
+    nome: "Bitcoin",
+    simbolo: "BTC",
+    preco: 100229.9, // Preço em dólares americanos
+    imagem: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+    value: 25
+  },
+  {
+    nome: "Ethereum",
+    simbolo: "ETH",
+    preco: 3621.60,
+    imagem: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+    value: 20
+  },
+  {
+    nome: "Tether",
+    simbolo: "USDT",
+    preco: 0.9994,
+    imagem: "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png",
+    value: 15
+  },
+  {
+    nome: "XRP",
+    simbolo: "XRP",
+    preco: 2.3218,
+    imagem: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+    value: 10
+  },
+  {
+    nome: "Solana",
+    simbolo: "SOL",
+    preco: 217.64,
+    imagem: "https://assets.coingecko.com/coins/images/4128/large/Solana.jpg",
+    value: 10
+  },
+  {
+    nome: "Cardano",
+    simbolo: "ADA",
+    preco: 1.05,
+    imagem: "https://assets.coingecko.com/coins/images/975/large/cardano.png",
+    value: 20
+  }
+];
+
 export default function AddForm() {
   return (
-    <div className="flex items-center justify-center h-full gap-5">
-      <Select className="max-w-xs " label="Select country"
+    <div className="flex items-center justify-center h-full gap-5 w-full">
+      <Select className="w-2/5" label="Select token"
         classNames={{
           mainWrapper: "bg-transparent",
           trigger: [
@@ -17,75 +62,19 @@ export default function AddForm() {
           selectorIcon: "text-white"
         }}
       >
-        <SelectItem
-          className="text-white"
-          key="argentina"
-          startContent={
-            <Avatar alt="Argentina" className="w-6 h-6" src="https://flagcdn.com/ar.svg" />
-          }
-        >
-          Argentina
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="venezuela"
-          startContent={
-            <Avatar alt="Venezuela" className="w-6 h-6" src="https://flagcdn.com/ve.svg" />
-          }
-        >
-          Venezuela
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="brazil"
-          startContent={<Avatar alt="Brazil" className="w-6 h-6" src="https://flagcdn.com/br.svg" />}
-        >
-          Brazil
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="switzerland"
-          startContent={
-            <Avatar alt="Switzerland" className="w-6 h-6" src="https://flagcdn.com/ch.svg" />
-          }
-        >
-          Switzerland
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="germany"
-          startContent={<Avatar alt="Germany" className="w-6 h-6" src="https://flagcdn.com/de.svg" />}
-        >
-          Germany
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="spain"
-          startContent={<Avatar alt="Spain" className="w-6 h-6" src="https://flagcdn.com/es.svg" />}
-        >
-          Spain
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="france"
-          startContent={<Avatar alt="France" className="w-6 h-6" src="https://flagcdn.com/fr.svg" />}
-        >
-          France
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="italy"
-          startContent={<Avatar alt="Italy" className="w-6 h-6" src="https://flagcdn.com/it.svg" />}
-        >
-          Italy
-        </SelectItem>
-        <SelectItem
-          className="text-white"
-          key="mexico"
-          startContent={<Avatar alt="Mexico" className="w-6 h-6" src="https://flagcdn.com/mx.svg" />}
-        >
-          Mexico
-        </SelectItem>
+        {coins.map((coin, i) => {
+          return (
+            <SelectItem
+              className="text-white"
+              color="primary"
+              key={i}
+              startContent={
+                <Avatar alt="Argentina" className="w-6 h-6" src={coin.imagem} />
+              }
+              >{coin.nome}
+            </SelectItem>
+          )
+        })}
       </Select>
       <Input
       classNames={{
@@ -111,7 +100,7 @@ export default function AddForm() {
           "!cursor-text",
         ],
       }}
-      className="h-full"
+      className="h-full w-2/5"
       endContent={
         <div className="pointer-events-none flex items-center">
           <span className="text-default-400 text-small">$</span>
@@ -122,7 +111,7 @@ export default function AddForm() {
       placeholder="0.00"
       type="number"
     />
-    <Button color="primary" className="h-14">Button</Button>
+    <Button color="primary" className="h-14 w-1/5">Add</Button>
   </div>
   );
 }
