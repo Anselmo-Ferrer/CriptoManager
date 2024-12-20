@@ -7,17 +7,24 @@ import {
   TableCell,
 } from "@nextui-org/react";
 
-export default function Maintable() {
+interface Token {
+  token: string;
+  price: number;
+}
 
+interface MaintableProps {
+  tokens: Token[];
+}
 
+export default function Maintable({ tokens }: MaintableProps) {
   return (
     <div className="flex flex-col gap-3">
       <Table
         aria-label="Example static collection table"
         color="primary"
         selectionMode="single"
-        style={{color: "#fff"}}
-        className="bg-[rgba(28, 28, 28, 0.6)] backdrop-blur-md rounded-xl nextui-table"
+        style={{ color: "#fff" }}
+        className="bg-[rgba(28,28,28,0.6)] backdrop-blur-md rounded-xl nextui-table"
       >
         <TableHeader className="bg-black">
           <TableColumn>NAME</TableColumn>
@@ -27,44 +34,17 @@ export default function Maintable() {
           <TableColumn>DATA</TableColumn>
         </TableHeader>
         <TableBody>
-          <TableRow key="1">
-            <TableCell>Tony Reichert</TableCell>
-            <TableCell>CEO</TableCell>
-            <TableCell>Active</TableCell>
-            <TableCell>Active</TableCell>
-            <TableCell>Active</TableCell>
-          </TableRow>
-          <TableRow key="2">
-            <TableCell>Zoey Lang</TableCell>
-            <TableCell>Technical Lead</TableCell>
-            <TableCell>Paused</TableCell>
-            <TableCell>Paused</TableCell>
-            <TableCell>Paused</TableCell>
-          </TableRow>
-          <TableRow key="3">
-            <TableCell>Jane Fisher</TableCell>
-            <TableCell>Senior Developer</TableCell>
-            <TableCell>Active</TableCell>
-            <TableCell>Active</TableCell>
-            <TableCell>Active</TableCell>
-          </TableRow>
-          <TableRow key="4">
-            <TableCell>William Howard</TableCell>
-            <TableCell>Community Manager</TableCell>
-            <TableCell>Vacation</TableCell>
-            <TableCell>Vacation</TableCell>
-            <TableCell>Vacation</TableCell>
-          </TableRow>
-          <TableRow key="5">
-            <TableCell>William Howard</TableCell>
-            <TableCell>Community Manager</TableCell>
-            <TableCell>Vacation</TableCell>
-            <TableCell>Vacation</TableCell>
-            <TableCell>Vacation</TableCell>
-          </TableRow>
+          {tokens.map((token, i) => (
+            <TableRow key={i}>
+              <TableCell>{token.token}</TableCell>
+              <TableCell>{token.price}</TableCell>
+              <TableCell>Active</TableCell>
+              <TableCell>Active</TableCell>
+              <TableCell>Active</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
   );
 }
-

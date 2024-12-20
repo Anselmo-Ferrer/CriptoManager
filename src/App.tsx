@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AddForm from "./components/AddForm";
 import CryptoPrice from "./components/CryptoPrice";
 import HomeCard from "./components/HomeCard";
@@ -6,6 +7,10 @@ import Maintable from "./components/MainTable";
 import TotalWallet from "./components/TotalWallet";
 
 export default function App() {
+
+  const [tokens, setTokens] = useState([
+    { token: "Bitcoin", price: 100000 },
+  ]);
 
   return (
       <div className="relative w-full h-fit bg-black">
@@ -17,7 +22,7 @@ export default function App() {
         <div className="z-20 relative p-20 flex flex-col w-full gap-8">
           <div className="w-full flex justify-between items-center">
             <div className="w-[79%]">
-              <AddForm />
+            <AddForm tokens={tokens} setTokens={setTokens} />
             </div>
             <div className="w-[20%]">
               <img src="src/assets/logo2.png" alt="" />
@@ -37,7 +42,7 @@ export default function App() {
                 </div>
                 <MainChart />
               </div>
-              <Maintable />
+              <Maintable tokens={tokens} />
 
             </div>
 
